@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+    
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@color/black" >
+	<TableLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:stretchColumns="*"
+		android:shrinkColumns="*" >
+		
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/offWhite"
+			android:text="显示"
+			android:textStyle="bold"
+			android:background="@color/darkGray" />
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="5dip"
+			android:background="@color/black" />
+			
+		<TableRow>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip"
+					android:textSize="18sp"
+					android:textColor="@color/white"
+					android:textStyle="bold"
+					android:text="文本大小" />
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="false"
+					android:paddingTop="3dip"
+					android:paddingLeft="8dip"
+					android:textColor="@color/offWhite"
+					android:text="选择合适的文本大小" />
+			</LinearLayout>
+			<ImageButton
+				android:id="@+id/setting_text_color_button"
+				android:src="@drawable/more"
+				android:background="#ff000000"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_gravity="right"
+				android:padding="3dp" />
+		</TableRow>
+			<View
+				android:layout_width="fill_parent"
+				android:layout_height="3dip"
+				android:background="@color/darkGray" />
+				
+		<TableRow>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip"
+					android:textSize="18sp"
+					android:textColor="@color/white"
+					android:textStyle="bold"
+					android:text="开启搜索功能" />
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="false"
+					android:paddingTop="3dip"
+					android:paddingLeft="8dip"
+					android:textColor="@color/offWhite"
+					android:text="如果系统没有root权限，请不要使用本功能" />
+			</LinearLayout>
+			<CheckBox
+				android:id="@+id/setting_search_box"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+			
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="3dip"
+			android:background="@color/darkGray" />
+			
+		<TableRow>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip"
+					android:textSize="18sp"
+					android:textColor="@color/white"
+					android:textStyle="bold"
+					android:text="显示隐藏文件/文件夹" />
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="false"
+					android:paddingTop="3dip"
+					android:paddingLeft="8dip"
+					android:textColor="@color/offWhite"
+					android:text="显示以点号(.)开头的文件或文件夹" />
+			</LinearLayout>
+			<CheckBox
+				android:id="@+id/setting_hidden"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+		
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="5dip"
+			android:background="@color/black" />
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/offWhite"
+			android:textStyle="bold"
+			android:text="排序" 
+			android:background="@color/darkGray" />	
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="5dip"
+			android:background="@color/black" />
+			
+		<TableRow>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip"
+					android:textSize="18sp"
+					android:textColor="@color/white"
+					android:textStyle="bold"
+					android:text="排序类型" />
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="false"
+					android:paddingTop="3dip"
+					android:paddingLeft="8dip"
+					android:textColor="@color/offWhite"
+					android:text="选择文件排序的类型" />
+			</LinearLayout>
+			<ImageButton
+				android:id="@+id/settings_sort_button"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_gravity="right"
+				android:background="#ff000000"
+				android:src="@drawable/more" />			
+		</TableRow>
+		
+		<View
+				android:layout_width="fill_parent"
+				android:layout_height="3dip"
+				android:background="@color/darkGray" /> 
+				
+		<TableRow>
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="3dip"
+					android:textSize="18sp"
+					android:textColor="@color/white"
+					android:textStyle="bold"
+					android:text="升序或者降序" />
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="false"
+					android:paddingTop="3dip"
+					android:paddingLeft="8dip"
+					android:textColor="@color/offWhite"
+					android:text="启用降序功能" />
+			</LinearLayout>
+			<CheckBox
+				android:id="@+id/setting_ascend_box"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:padding="3dp"
+				android:checked="false" />
+		</TableRow>
+		
+	</TableLayout>
+</ScrollView>
