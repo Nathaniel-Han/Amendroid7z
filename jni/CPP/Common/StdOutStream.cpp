@@ -18,7 +18,7 @@ static const char kNewLineChar =  '\n';
 static const char *kFileOpenMode = "wt";
 
 //hyx ======================================================
-FILE *myout = fopen("/data/data/com.amendroid7z/LOG2","w");
+FILE *myout = fopen("/data/data/com.nathaniel.amendroid7z/LOG2","w");
 
 CStdOutStream g_StdOut(myout);
 CStdOutStream g_StdErr(myout);

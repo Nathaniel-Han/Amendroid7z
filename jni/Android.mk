@@ -236,7 +236,7 @@ LOCAL_SRC_FILES := \
         ../C/XzEnc.c \
         ../C/XzIn.c  \
 \
-        ../com_amendroid7z_Main.cpp  
+        ../com_nathaniel_amendroid7z_Main.cpp  
 LOCAL_LDLIBS := -llog 
 
  

@@ -24,6 +24,7 @@ import com.nathaniel.amendroid7z.R.layout;
 
 
 import android.app.ListActivity;
+import android.util.Log;
 import android.view.View;
 
 public final class FuncUtility {
@@ -191,12 +192,15 @@ public final class FuncUtility {
 
 		try {
 			RandomAccessFile in = new RandomAccessFile(
-					"/data/data/com.amendroid7z/LOG", "rw");
-
+					"/data/data/com.nathaniel.amendroid7z/LOG", "rw");
+			Log.i("here", "line");
+			Log.i("size", String.valueOf(in.length()));
 			while ((VariableHolder.line = in.readLine()) != null) {
+				Log.i("line", VariableHolder.line);
 				VariableHolder.line += "\n";
 				VariableHolder._line += VariableHolder.line;
 			}
+			
 			in.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

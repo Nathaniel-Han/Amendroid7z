@@ -113,6 +113,7 @@ static const char *kEverythingIsOk = "Everything is Ok";
 static const char *kUserErrorMessage = "Incorrect command line";
 static const char *kNoFormats = "7-Zip cannot find the code that works with archives.";
 static const char *kUnsupportedArcTypeMessage = "Unsupported archive type";
+
 //hyx
 extern FILE *myout;
 //==hyx
@@ -202,9 +203,8 @@ int _interface(
   mySplitCommandLine(numArgs,args,commandStrings);
   #endif
 
-  FILE *fp1 = fopen("/data/data/com.amendroid7z/LOG1","w");
+  FILE *fp1 = fopen("/data/data/com.nathaniel.amendroid7z/LOG1","w");
   CStdOutStream stdStream(fp1);
-
 
 
   if (commandStrings.Size() == 1)

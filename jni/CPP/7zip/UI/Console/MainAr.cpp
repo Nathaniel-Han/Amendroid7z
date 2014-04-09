@@ -31,7 +31,7 @@ int MY_CDECL interface
 )
 {
   FILE *fp;
-  if((fp = fopen("/data/data/com.amendroid7z/LOG","w")) == NULL)
+  if((fp = fopen("/data/data/com.nathaniel.amendroid7z/LOG","w")) == NULL)
 	  return 3;
 
 

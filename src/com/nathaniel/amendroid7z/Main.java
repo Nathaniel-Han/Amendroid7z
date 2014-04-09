@@ -29,6 +29,7 @@ import android.os.Environment;
 import android.text.InputType;
 import android.text.TextPaint;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -349,7 +350,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 	 public void MenuItem4(){
 		 Main.this.finish();
 		 int nPid=android.os.Process.myPid();
-		 android.os.Process.killProcess(nPid);
+		 android.os.Process.killProcess(nPid);		 
 	}	 
 	 
 	// 打开文件或服务
@@ -966,13 +967,14 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 				}
 			case VariableHolder.ZIP_PASSWORD_TYPE:
 			case VariableHolder.UNZIP_TYPE:
-				Main.doeverything(params[0]);
+				doeverything(params[0]);
 				return null;
 			case VariableHolder.LIST_TYPE: {
-				Main.doeverything(params[0]);
+				doeverything(params[0]);
+				Log.i("command", params[0]);
 				// This is a trick*****************
 				if (VariableHolder.First)
-					Main.doeverything(params[0]);
+					doeverything(params[0]);
 				// ********************************
 				return null;
 			}
