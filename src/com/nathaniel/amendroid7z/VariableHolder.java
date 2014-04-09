@@ -27,7 +27,7 @@ public final class VariableHolder {
 	
 	public static FileManager fileManager=new FileManager();
 	public static Unzip_type unzip_type=new Unzip_type();
-	public static DialogFactory dialog_factory;
+	
 	
 	
 	public static String Unzip_file_path;
