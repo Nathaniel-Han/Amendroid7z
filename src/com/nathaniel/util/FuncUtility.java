@@ -152,7 +152,7 @@ public final class FuncUtility {
 		});
 
 		for (int i = 0; i < files.length; i++) {
-			if (VariableHolder.hidden) {
+			if (!VariableHolder.hidden) {
 				String fName = files[i].getName();
 				String true_name = fName.substring(fName.lastIndexOf("/") + 1,
 						fName.length());

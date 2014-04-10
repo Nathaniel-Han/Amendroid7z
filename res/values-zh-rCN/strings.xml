@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, main!</string>
+    <string name="dir_info">Folder Information</string>
+    <string name="app_name">Amendroid7z</string>
+    <string name="set_name">设置</string>
+    <string name="back">返回</string>
+    <string name="search">搜索</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+    <string name="unzip">解压</string>
+    <string name="menu_compress">压缩</string>
+    <string name="menu_search">搜索</string>
+    <string name="menu_new">新建</string>
+    <string name="menu_setting">设置</string>
+    <string name="menu_exit">退出</string>
+    <string name="warning">警告</string>
+    <string name="warning_permission">没有权限!</string>
+    <string name="toast_find">还未开启搜索功能</string>
+    <string name="zip_info">压缩信息</string>
+    <string name="search_info">查找文件(支持部分通配符)</string>
+    <string name="choose_oper">请选择操作</string>
+    <string name="conform_exit">确认退出吗?</string>
+    <string name="conform_delete">确认删除吗?</string>
+    <string name="SD_info">未发现SD卡!</string>
+    <string name="zip_setting">压缩参数设置</string>
+    <string name="input_new_fname">请输入新文件名</string>
+    <string name="input_fname">请输入文件名</string>
+    <string name="input_pass">请输入密码</string>
+    <string name="create_file_info">无法创建文件</string>
+    <string name="hint">提示</string>
+    <string name="extra_hint">,请稍后...</string>
+    <string name="try_again">请再试一次</string>
+    <string name="search_result_info">找不到文件</string>
+    <string name="searching">正在查找</string>
+    <string name="compressing">正在压缩</string>
+    <string name="extracting">正在解压</string>
+    <string name="listing"> </string>
+    <string name="copying">正在复制</string>
+    <string name="moving">正在移动</string>
+    <string name="deleting">正在删除</string>
+    <string name="search_result">查找结果</string>
+    <string name="input_new_folder_name">请输入文件夹名称</string>
+    <string name="compress_type">压缩类型</string>
+    <string name="ask_encrypt">是否加密</string>
+    <string name="unzip_encrypt_hint">若需输入解压密码请选择</string>
+    <string name="display">显示</string>
+     <string name="text_size">文本大小</string>
+     <string name="text_size_hint">选择合适的文本大小</string>
+     <string name="enable_search">开启搜索功能</string>
+     <string name="enable_search_hint">如果系统没有root权限，请不要使用本功能</string>
+     <string name="show_file">显示隐藏文件/文件夹</string>
+     <string name="show_file_hint">显示以点号(.)开头的文件或文件夹</string>
+     <string name="sort">排序</string>
+ 	 <string name="sort_type">排序类型</string>
+ 	 <string name="sort_type_hint">选择文件排序的类型</string>
+ 	 <string name="ascending">升序或者降序</string>
+    <string name="ascending_hint">启用降序功能</string>
+    <string name="change_text">改变文本大小</string>
+ 	 <string name="change_sorting">排序类型</string>
+ 	 
+    <string-array name="operte">
+        <item>解压</item>
+        <item>删除</item>
+        <item>移动</item>
+        <item>复制</item>
+        <item>重命名</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="operte2">
+        <item>压缩</item>
+        <item>删除</item>
+        <item>移动</item>
+        <item>复制</item>
+        <item>重命名</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="text_options">
+        <item>小</item>
+        <item>中</item>
+        <item>大</item>
+    </string-array>
+    <string-array name="sort_options">
+        <item>字母</item>
+        <item>类型</item>
+        <item>大小</item>
+        <item>日期</item>
+    </string-array>
+
+</resources>

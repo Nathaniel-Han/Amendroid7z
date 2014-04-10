@@ -51,11 +51,10 @@ public class Settings extends Activity{
 			@Override
 			public void onClick(View view) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
-				CharSequence[] options = {"小", "中", "大"};
 				
-				builder.setTitle("改变文本大小");
+				builder.setTitle(R.string.change_text);
 				builder.setIcon(R.drawable.size);
-				builder.setSingleChoiceItems(options, size_state, new DialogInterface.OnClickListener() {
+				builder.setSingleChoiceItems(R.array.text_options, size_state, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int index) {
 						switch(index) {
@@ -110,11 +109,10 @@ public class Settings extends Activity{
 			@Override
 			public void onClick(View view) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
-    			CharSequence[] options = {"字母", "类型","大小", "日期"};
     			
-    			builder.setTitle("Sort by...");
+    			builder.setTitle(R.string.change_sorting);
     			builder.setIcon(R.drawable.sort);
-    			builder.setSingleChoiceItems(options, sort_state, new DialogInterface.OnClickListener() {					
+    			builder.setSingleChoiceItems(R.array.sort_options, sort_state, new DialogInterface.OnClickListener() {					
 					@Override
 					public void onClick(DialogInterface dialog, int index) {
 						switch(index) {
@@ -157,10 +155,7 @@ public class Settings extends Activity{
 				is.putExtra("ASCEND", ascend_state);
 				mAscendChanged = true;
 			}
-		});
-		
-		
-		
+		});	
 	}
 	
 	

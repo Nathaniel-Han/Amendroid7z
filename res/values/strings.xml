@@ -1,7 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="hello">Hello World, main!</string>
     <string name="dir_info">Folder Information</string>
     <string name="app_name">Amendroid7z</string>
-    <string name="set_name">设置</string>
+    <string name="set_name">settings</string>
+    <string name="back">Back</string>
+    <string name="search">Search</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="unzip">Extract</string>
+    <string name="menu_compress">Compress</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_new">New</string>
+    <string name="menu_setting">Settings</string>
+    <string name="menu_exit">Exit</string>
+    <string name="warning">Warning</string>
+    <string name="warning_permission">No Permission!</string>
+    <string name="toast_find">search service is unenable!</string>
+    <string name="zip_info">Compression Info</string>
+    <string name="search_info">support partial wildcards</string>
+    <string name="choose_oper">Please Choose</string>
+    <string name="conform_exit">Sure to Exit?</string>
+    <string name="conform_delete">Sure to Delete?</string>
+    <string name="SD_info">Can\'t find SD card!</string>
+    <string name="zip_setting">Compress Setting</string>
+    <string name="input_new_fname">new file name</string>
+    <string name="input_fname">file name</string>
+    <string name="input_pass">password</string>
+    <string name="create_file_info">Can\'t create new file</string>
+    <string name="hint">Hint</string>
+    <string name="extra_hint">, please wait...</string>
+    <string name="try_again">Please try again</string>
+    <string name="search_result_info">find nothing</string>
+    <string name="searching">searching</string>
+    <string name="compressing">compressing</string>
+    <string name="extracting">extracting</string>
+    <string name="listing"></string>
+    <string name="copying">copying</string>
+    <string name="moving">moving</string>
+    <string name="deleting">deleting</string>
+    <string name="search_result">Result</string>
+    <string name="input_new_folder_name">new folder name</string>
+    <string name="compress_type">Compress Type</string>
+    <string name="ask_encrypt">encrypt</string>
+    <string name="unzip_encrypt_hint">Choose if file is encrypted</string>
+    <string name="display">Display</string>
+    <string name="text_size">Text Size</string>
+    <string name="text_size_hint">Choose your preferred text size</string>
+    <string name="enable_search">Enable Seaching</string>
+    <string name="enable_search_hint">If system is not rooted, please don\'t enable seaching</string>
+    <string name="show_file">Show hidden files/folders</string>
+    <string name="show_file_hint">Show files/folders whose name begins with a period(.)</string>
+    <string name="sort">Sort</string>
+    <string name="sort_type">Sorting Type</string>
+    <string name="sort_type_hint">Choose how to sort files/folders</string>
+    <string name="ascending">Ascending Or Not</string>
+    <string name="ascending_hint">choose descending</string>
+    <string name="change_text">Change Text Size</string>
+    <string name="change_sorting">Sort by...</string>
+
+    <string-array name="operte">
+        <item>extract</item>
+        <item>delete</item>
+        <item>move</item>
+        <item>copy</item>
+        <item>rename</item>
+        <item>cancel</item>
+    </string-array>
+    <string-array name="operte2">
+        <item>compress</item>
+        <item>delete</item>
+        <item>move</item>
+        <item>copy</item>
+        <item>rename</item>
+        <item>cancel</item>
+    </string-array>
+    <string-array name="text_options">
+        <item>Small</item>
+        <item>Middle</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="sort_options">
+        <item>alphabet</item>
+        <item>type</item>
+        <item>size</item>
+        <item>date</item>
+    </string-array>
+
 </resources>

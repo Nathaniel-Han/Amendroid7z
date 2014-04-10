@@ -10,10 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.nathaniel.amendroid7z.R;
-import com.nathaniel.amendroid7z.R.drawable;
-import com.nathaniel.amendroid7z.R.id;
-import com.nathaniel.amendroid7z.R.layout;
 import com.nathaniel.util.CheckMap;
 import com.nathaniel.util.Unzip_type;
 

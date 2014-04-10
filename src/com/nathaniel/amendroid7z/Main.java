@@ -57,12 +57,14 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 	
 	private ImageButton back=null;
 	private ImageButton home=null;
-		
 	
+	String hint = null;
+	String extra_hint = null;
+	
+	public DialogFactory dialog_factory;
+
     //for Settings
 	private SharedPreferences mSettings;
-	public DialogFactory dialog_factory = new DialogFactory(Main.this);
-	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,11 +89,14 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
         VariableHolder.cancle=(ImageButton)findViewById(R.id.cancle_button);
         VariableHolder.cancle.setOnClickListener(this);
         
+    	hint = getResources().getString(R.string.hint);
+		extra_hint = getResources().getString(R.string.extra_hint);
+        
         getListView().setOnItemLongClickListener(this);
         VariableHolder.check_state=new HashMap<String, CheckMap>();
         VariableHolder.position=new HashMap<String, Integer>();
         
-        //VariableHolder.dialog_factory = new DialogFactory(Main.this);
+        dialog_factory = new DialogFactory(Main.this);
         
   
      //record position
@@ -157,8 +162,6 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
     }
   
    
-
-  //点击文件或文件夹引发的事件
     protected void onListItemClick(ListView l,View v,int position,long id)
     {
        	File file=new File(VariableHolder.file_path.get(position));
@@ -186,10 +189,9 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
     	}
     	else
     	{
-    		dialog_factory.SimpleDialog("Message", "没有权限!");
+    		dialog_factory.SimpleDialog(R.string.warning, R.string.warning_permission);
     	}
     }
-  //=============================点击文件或文件夹引发的事件
 
 	@Override
 	public void onClick(View id) {
@@ -262,7 +264,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 				}
 			}}
 			else {
-				dialog_factory.SimpleDialog("Message", "没有权限!");
+				dialog_factory.SimpleDialog(R.string.warning, R.string.warning_permission);
 		}
 		return true;
 	}	
@@ -293,11 +295,11 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 	 
 	 public boolean onCreateOptionsMenu(Menu menu)
 	 {
-		 menu.add(0,VariableHolder.ITEM0,0,"压缩").setIcon(R.drawable.add7z);
-		 menu.add(0,VariableHolder.ITEM1,0,"搜索").setIcon(R.drawable.search);
-		 menu.add(0,VariableHolder.ITEM2,0,"新建").setIcon(R.drawable.newfolder);
-		 menu.add(0,VariableHolder.ITEM3,0,"设置").setIcon(R.drawable.setting);
-		 menu.add(0,VariableHolder.ITEM4,0,"退出").setIcon(R.drawable.logout);
+		 menu.add(0,VariableHolder.ITEM0,0,R.string.menu_compress).setIcon(R.drawable.add7z);
+		 menu.add(0,VariableHolder.ITEM1,0,R.string.menu_search).setIcon(R.drawable.search);
+		 menu.add(0,VariableHolder.ITEM2,0,R.string.menu_new).setIcon(R.drawable.newfolder);
+		 menu.add(0,VariableHolder.ITEM3,0,R.string.menu_setting).setIcon(R.drawable.setting);
+		 menu.add(0,VariableHolder.ITEM4,0,R.string.menu_exit).setIcon(R.drawable.logout);
 		 return true;
 	 }
 	 
@@ -331,7 +333,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		 if(VariableHolder.search)
 		    showDialog(VariableHolder.COM_SEARCH_INPUT);
 		 else {
-			 Toast.makeText(Main.this, "还未开启搜索功能" , Toast.LENGTH_LONG).show();
+			 Toast.makeText(Main.this, R.string.toast_find , Toast.LENGTH_LONG).show();
 		}
 	}
 	 public void MenuItem2(){  
@@ -353,7 +355,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		 android.os.Process.killProcess(nPid);		 
 	}	 
 	 
-	// 打开文件或服务
+	// open file with correct program in the system
 	private void openFile(File f) {
 		String type = FuncUtility.GetType(f);
 		{
@@ -372,7 +374,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			
 		}
 	}
-	//==============打开文件或服务
+	//============== open file with correct program in the system
 	
 	public class DialogFactory {
 		private ListActivity activity;
@@ -386,7 +388,24 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 
 			builder.setMessage(message);
 			builder.setTitle(title);
-			builder.setPositiveButton("OK",
+			builder.setPositiveButton(R.string.ok,
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+
+						}
+					});
+			builder.create().show();
+		}
+		
+		public void SimpleDialog(int title,int message) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+			builder.setMessage(message);
+			builder.setTitle(title);
+			builder.setPositiveButton(R.string.ok,
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -409,8 +428,8 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		
 		public void InitialHandleDialog() {
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("未发现SD卡！")
-					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setTitle(R.string.SD_info)
+					.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							FuncUtility.GetFile(activity, "/", false);
@@ -420,8 +439,8 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		
 		public void FolderHandleDialog(final int position2){
 			AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-			builder.setTitle("请选择操作");
-			builder.setItems(VariableHolder.operte2,new DialogInterface.OnClickListener(){
+			builder.setTitle(R.string.choose_oper);
+			builder.setItems(R.array.operte2,new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog,int item){
 					if (item==0) {
 						String filename = new String(VariableHolder.file_name.get(position2));
@@ -455,8 +474,8 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		
 		public void ZipFileHandleDialog(final int position2){
 			AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-			builder.setTitle("请选择操作");
-			builder.setItems(VariableHolder.operte,new DialogInterface.OnClickListener(){
+			builder.setTitle(R.string.choose_oper);
+			builder.setItems(R.array.operte,new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog,int item){
 					if (item==0) {
 						VariableHolder.operation="unzip";
@@ -491,8 +510,8 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		
 		public void NonZipFileDialog(final int position2){
 			AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-			builder.setTitle("请选择操作");
-			builder.setItems(VariableHolder.operte3,new DialogInterface.OnClickListener(){
+			builder.setTitle(R.string.choose_oper);
+			builder.setItems(R.array.operte2,new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog,int item){
 					if(item==0)  {
 						String fullfilename = new String(VariableHolder.file_name.get(position2));
@@ -544,7 +563,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			tv.setMovementMethod(ScrollingMovementMethod.getInstance());
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("压缩信息");
+			builder.setTitle(R.string.zip_info);
 			DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 
 				@Override
@@ -552,7 +571,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 					activity.removeDialog(VariableHolder.COM_LIST);
 				}
 			};
-			builder.setPositiveButton("返回", listener).setView(textEntryView)
+			builder.setPositiveButton(R.string.back, listener).setView(textEntryView)
 					.setCancelable(false);
 
 			return builder.create();
@@ -568,7 +587,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			tv.setMovementMethod(ScrollingMovementMethod.getInstance());
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("Result");
+			builder.setTitle(R.string.search_result);
 
 			DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 				@Override
@@ -576,7 +595,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 					activity.removeDialog(VariableHolder.COM_SEARCH);
 				}
 			};
-			builder.setPositiveButton("返回", listener).setView(textEntryView)
+			builder.setPositiveButton(R.string.back, listener).setView(textEntryView)
 					.setCancelable(false);
 
 			return builder.create();
@@ -591,12 +610,12 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			searchIcon.setImageResource(R.drawable.search);
 			TextView search_label = (TextView) textEntryView
 					.findViewById(R.id.input_label);
-			search_label.setText("查找文件(支持部分通配符)");
+			search_label.setText(R.string.search_info);
 			final EditText search_input = (EditText) textEntryView
 					.findViewById(R.id.input_inputText);
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("搜索");
+			builder.setTitle(R.string.search);
 
 			DialogInterface.OnClickListener listener1 = new DialogInterface.OnClickListener() {
 				@Override
@@ -614,20 +633,19 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 					activity.removeDialog(VariableHolder.COM_SEARCH_INPUT);
 				}
 			};
-			builder.setPositiveButton("search", listener1)
-					.setNegativeButton("cancel", listener2).setView(textEntryView)
+			builder.setPositiveButton(R.string.search, listener1)
+					.setNegativeButton(R.string.cancel, listener2).setView(textEntryView)
 					.setCancelable(false);
 
 			return builder.create();
 
 		}
 
-		// 处理键盘返回按钮事件
 		public Dialog returnDialog() {
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-			builder.setTitle("确认退出吗？")
-					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setTitle(R.string.conform_exit)
+					.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							activity.finish();
@@ -635,7 +653,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 							android.os.Process.killProcess(nPid);
 						}
 					})
-					.setNegativeButton("Cancel",
+					.setNegativeButton(R.string.cancel,
 							new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface arg0, int arg1) {
@@ -644,8 +662,6 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 							}).setCancelable(false);
 			return builder.create();
 		}
-
-		// =========================处理键盘返回按钮事件
 		
 		public void newfile_dialog(){
 		    LayoutInflater factory = LayoutInflater.from(activity);
@@ -654,14 +670,14 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 	    	VariableHolder.editText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 	    	VariableHolder.editText.setText(null);
 			AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-			builder.setTitle("请输入文件夹名称").setView(textEntryView)
-			.setPositiveButton("OK",new DialogInterface.OnClickListener(){
+			builder.setTitle(R.string.input_new_folder_name).setView(textEntryView)
+			.setPositiveButton(R.string.ok,new DialogInterface.OnClickListener(){
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {		
 				 VariableHolder.fileManager.createDir(VariableHolder.now_path,VariableHolder.editText.getText().toString());
 				 FuncUtility.GetFile(activity, VariableHolder.now_path, false);
 			}})
-			.setNegativeButton("cancel",new DialogInterface.OnClickListener(){
+			.setNegativeButton(R.string.cancel,new DialogInterface.OnClickListener(){
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 				}
@@ -670,15 +686,15 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		
 		public void delete_dialog() {
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("确认删除吗？")
-					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setTitle(R.string.conform_delete)
+					.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							new BackgroundWork(VariableHolder.DELETE_TYPE, activity)
 									.execute("");
 						}
 					})
-					.setNegativeButton("Cancel",
+					.setNegativeButton(R.string.cancel,
 							new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface arg0, int arg1) {
@@ -695,9 +711,9 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 					.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 			VariableHolder.editText.setText(null);
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("请输入新文件名")
+			builder.setTitle(R.string.input_new_fname)
 					.setView(textEntryView)
-					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							VariableHolder.fileManager.renameTarget(
@@ -707,7 +723,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 									VariableHolder.check_box);
 						}
 					})
-					.setNegativeButton("cancel",
+					.setNegativeButton(R.string.cancel,
 							new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface arg0, int arg1) {
@@ -717,7 +733,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 
 		public void zipDialog(String filename) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("压缩参数设置");
+			builder.setTitle(R.string.zip_setting);
 			LayoutInflater inflater = activity.getLayoutInflater();
 			View view = inflater.inflate(R.layout.create7z, null);
 
@@ -747,7 +763,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 
 			final EditText doc_name = (EditText) view.findViewById(R.id.doc_name);
 			if (filename == null)
-				doc_name.setHint("请输入文件名");
+				doc_name.setHint(R.string.input_fname);
 			else
 				doc_name.setText(filename);
 
@@ -755,7 +771,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			final EditText doc_password = (EditText) view
 					.findViewById(R.id.doc_password);
 			doc_password.setVisibility(View.INVISIBLE);
-			doc_password.setHint("请输入密码");
+			doc_password.setHint(R.string.input_pass);
 
 			doc_password.setText(null);
 
@@ -775,7 +791,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 				}
 			});
 
-			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					// TODO Auto-generated method stub
@@ -798,13 +814,13 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 						break;
 					}
 
-					// 处理重名问题
+					// handle problem of duplication name
 					String fname = doc_name.getText() + "." + type;
 					File file = new File(VariableHolder.now_path);
 					File[] files = file.listFiles();
 					for (File f : files) {
 						if (f.getName().equals(fname)) {
-							Toast.makeText(activity, "无法创建文件", Toast.LENGTH_LONG)
+							Toast.makeText(activity, R.string.create_file_info, Toast.LENGTH_LONG)
 									.show();
 							FuncUtility.Clear_map();
 							FuncUtility.hid_tools();
@@ -821,7 +837,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 							.execute(command);
 
 				}
-			}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			}).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					// TODO Auto-generated method stub
@@ -865,8 +881,8 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 				}
 			});
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setTitle("解压").setView(textEntryView)
-					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setTitle(R.string.unzip).setView(textEntryView)
+					.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface arg0, int arg1) {
 							// TODO Auto-generated method stub
@@ -876,7 +892,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 							for (File f : files) {
 								if (f.getName().equals(
 										VariableHolder.Unzip_file_name)) {
-									Toast.makeText(activity, "无法创建文件",
+									Toast.makeText(activity, R.string.create_file_info,
 											Toast.LENGTH_LONG).show();
 									return;
 								}
@@ -900,9 +916,6 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 		}
 	}
 
-	
-	
-
 	// Our NDK Interface ===========================================
 	public native static int doeverything(String command);
 
@@ -922,33 +935,35 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			this.activity = activity;
 		}
 
-		private ProgressDialog MakePd(String mes) {
-			return ProgressDialog.show(activity, "提示", mes + ",请稍后...", true, true);
+		private ProgressDialog MakePd(int res_id) {
+		
+			String mes = getResources().getString(res_id);
+			return ProgressDialog.show(activity, hint, mes + extra_hint, true, true);
 		}
 
 		@Override
 		protected void onPreExecute() {
 			switch (type) {
 			case VariableHolder.SEARCH_TYPE:
-				pr_dialog = MakePd("正在查找");
+				pr_dialog = MakePd(R.string.searching);
 				break;
 			case VariableHolder.ZIP_PASSWORD_TYPE:
-				pr_dialog = MakePd("正在压缩");
+				pr_dialog = MakePd(R.string.compressing);
 				break;
 			case VariableHolder.UNZIP_TYPE:
-				pr_dialog = MakePd("正在解压");
+				pr_dialog = MakePd(R.string.extracting);
 				break;
 			case VariableHolder.LIST_TYPE:
-				pr_dialog = MakePd("");
+				pr_dialog = MakePd(R.string.listing);
 				break;
 			case VariableHolder.COPY_TYPE:
-				pr_dialog = MakePd("正在复制");
+				pr_dialog = MakePd(R.string.copying);
 				break;
 			case VariableHolder.MOVE_TYPE:
-				pr_dialog = MakePd("正在移动");
+				pr_dialog = MakePd(R.string.moving);
 				break;
 			case VariableHolder.DELETE_TYPE:
-				pr_dialog = MakePd("正在删除");
+				pr_dialog = MakePd(R.string.deleting);
 				break;
 			}
 		}
@@ -1001,7 +1016,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			switch (type) {
 			case VariableHolder.SEARCH_TYPE:
 				if (FuncUtility.searchResult.equals("")) {
-					Toast.makeText(activity, "找不到文件", Toast.LENGTH_LONG).show();
+					Toast.makeText(activity, R.string.search_result_info, Toast.LENGTH_LONG).show();
 					pr_dialog.dismiss();
 				} else {
 					activity.showDialog(VariableHolder.COM_SEARCH);
@@ -1022,7 +1037,7 @@ public class Main extends ListActivity implements OnClickListener,OnItemLongClic
 			case VariableHolder.LIST_TYPE:
 				FuncUtility.listFunc();
 				if (VariableHolder._line.equals("")) {
-					Toast.makeText(activity, "请再试一次", Toast.LENGTH_SHORT).show();
+					Toast.makeText(activity, R.string.try_again, Toast.LENGTH_SHORT).show();
 					pr_dialog.dismiss();
 				} else {
 					activity.showDialog(VariableHolder.COM_LIST);

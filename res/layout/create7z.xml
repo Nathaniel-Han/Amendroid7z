@@ -5,7 +5,7 @@
     android:layout_height="45dp"
     android:background="@color/offWhite">
   <TextView 
-   android:text="压缩类型"
+   android:text="@string/compress_type"
    android:textColor="@color/black"
    android:id="@+id/dialog_tv"
    android:layout_width="fill_parent"
@@ -22,7 +22,7 @@
   </Spinner>
   
   <TextView 
-   android:text="压缩文件名"
+   android:text="@string/input_new_fname"
    android:textColor="@color/black"
    android:id="@+id/dialog_tv"
    android:layout_width="fill_parent"
@@ -39,7 +39,7 @@
    android:textColor="@color/black">
   </EditText>
   <TextView 
-   android:text="是否加密"
+   android:text="@string/ask_encrypt"
    android:textColor="@color/black"
    android:id="@+id/dialog_tv"
    android:layout_width="fill_parent"

@@ -10,6 +10,5 @@ The main trick adopted here is to redirect the output of the program `7z`. Signi
 <div>jni</div><div>├── Android.mk</div><div>├── CPP</div><div>│ &nbsp; ├── 7zip</div><div>│ &nbsp; │ &nbsp; └── UI</div><div>│ &nbsp; │ &nbsp; &nbsp; &nbsp; └── Console</div><div>│ &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── Main.cpp</div><div>│ &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ├── MainAr.cpp</div><div>│ &nbsp; │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; └── MainAr.h</div><div>│ &nbsp; ├── Common</div><div>│ &nbsp; │ &nbsp; ├── StdOutStream.cpp</div><div>│ &nbsp; │ &nbsp; └── StdOutStream.h</div><div>│ &nbsp; └── myWindows</div><div>│ &nbsp; &nbsp; &nbsp; └── config.h</div><div>├── com_nathaniel_amendroid7z_Main.cpp</div><div>└── com_nathaniel_amendroid7z_Main.h</div><div id="spnEditorSign">
 </div>
 
-For the sake of space, I didn't upload the whole source code of 7zip. Instead, I just give the file that I have modified (without the change of file path). 
 
 I'm not the expert of Android NDK, but if you have any problem to compile 7zip using my Android.mk under NDK environment, please feel free to email me for discussion.

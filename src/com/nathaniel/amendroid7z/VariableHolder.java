@@ -62,16 +62,7 @@ public final class VariableHolder {
 	public static final int COM_SEARCH = 0x01;
 	public static final int COM_SEARCH_INPUT = 0x02;
 	public static final int COM_RETURN = 0x03;
-	//for FileHandle
-	public static final CharSequence[]operte={
-			"解压","删除","移动","复制","重命名","取消"
-	};
-	public static final CharSequence[]operte2={
-			"压缩","删除","移动","复制","重命名","取消"
-	};
-	public static final CharSequence[]operte3={
-			"压缩","删除","移动","复制","重命名","取消"
-	};
+	
 	//for BackgroundWork
 	public static final int SEARCH_TYPE = 0x10;
 	public static final int ZIP_PASSWORD_TYPE = 0x11;
