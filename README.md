@@ -1,7 +1,7 @@
-﻿Amendroid7z
+Amendroid7z
 ===========
 
-This is an Android File Manager based on 7zip.
+This is an Android File Manager based on 7zip. The published version can be downloaded from [Google Play](https://play.google.com/store/apps/details?id=com.nathaniel.amendroid7z).
 
 To compile 7zip into `Amendroid7z`, I utilized the NDK toolset provided by Google and made some modifications on the source code of 7zip.  Just follow instructions from official documentation, I wrote an NDK-style Makefile -- `Android.mk` under folder `jni/`. The output of NDK, dynamic link library -- `libmy7zip.so` is under folder `libs/armeabi/`. 
 
